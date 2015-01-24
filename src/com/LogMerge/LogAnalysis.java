@@ -35,7 +35,7 @@ public class LogAnalysis {
 			System.out.println("Log File could not open");
 		}
 	}
-	
+	//Opens the config file
 	public void lAnalysis(){
 		ui.user_Input();
 		Scanner s = new Scanner(System.in);
