@@ -21,7 +21,7 @@ public class LogAnalysis {
 	BufferedWriter pw;
 	TreeMap<Date, String> FinalLog = new TreeMap<Date, String>();
 	UserInput ui = new UserInput();
-	
+	//To-do
 	public void LogFileOpen(){
 		logFile = new File("LogSum");
 		try{
