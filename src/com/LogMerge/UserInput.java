@@ -63,8 +63,9 @@ public class UserInput {
 		}
 		return d;
 	}
-/*	public static void main(String args[]){
+	public static void main(String args[]){
 		UserInput ui = new UserInput();
-		ui.user_Input();
-	}*/
+		int len = args.length;
+	//	ui.user_Input();
+	}
 }
