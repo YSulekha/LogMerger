@@ -10,6 +10,8 @@ public class UserInput {
 	Date endDate;
 	String sStartDate;
 	String sEndDate;
+	String parentDirectory;
+	int timeDiff;
 	
 	public void user_Input(){
 		
@@ -65,7 +67,56 @@ public class UserInput {
 	}
 	public static void main(String args[]){
 		UserInput ui = new UserInput();
-		int len = args.length;
+		int i = 0;
+		String arg = "";
+		boolean t1 = false;
+		boolean t2 = false;
+		
+		
+		while (i < args.length && args[i].startsWith("-")) {
+      arg = args[i++];
+
+// use this type of check for "wordy" arguments
+      if (arg.equals("-f")) {
+          System.out.println("verbose mode on");
+         // vflag = true;
+      }
+
+// use this type of check for arguments that require arguments
+      else if (arg.equals("-d")) {
+          if (i < args.length)
+              ui.parentDirectory = args[i++];
+          else
+              System.err.println("-f requires a filename");
+      }
+      
+      else if(arg.equals("-t")){
+      	if (i < args.length)
+          ui.timeDiff = Integer.parseInt(args[i++]);
+      	 else
+           System.err.println("-t requires a timeDiff");
+      }
+      
+      else if(arg.equals("-t1")){
+      	if (i < args.length){
+      		t1 = true;
+          ui.sStartDate = args[i++];
+      	}
+      	 else
+           System.err.println("-t1 requires a date");
+      }
+      else if(arg.equals("-t2")){
+      	if (i < args.length){
+      		t2 = false;
+          ui.sEndDate = args[i++];
+      	}
+      	 else
+           System.err.println("-t2 requires a date");
+      }
+	}
+		if(!t1 || !t2){
+			System.err.println("Enter the date");
+		}
 	//	ui.user_Input();
 	}
 }
