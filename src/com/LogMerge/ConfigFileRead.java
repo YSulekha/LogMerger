@@ -1,7 +1,9 @@
 package com.LogMerge;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -32,6 +34,13 @@ public class ConfigFileRead {
 		TimeFormatList.add(Tokens[1]);
 		AliasNameList.add(Tokens[2]);
 	}
+	public void fileSearch(){
+		UserInput ui = new UserInput();
+		
+		if(ui.parentDirectory != null){
+			
+		}
+	}
 	/*Testing Purpose
 	public static void main(String [] args){
 		ConfigFileRead cr = new ConfigFileRead("/Users/aharyadi/Documents/workspace/Filef.txt");
@@ -45,3 +54,14 @@ public class ConfigFileRead {
 		System.out.println(cr.TimeFormatList);
 	}*/
 }
+class FileFilter implements FilenameFilter {
+    private String fileExtension;
+    public FileFilter(String fileExtension) {
+        this.fileExtension = fileExtension;
+    }
+    @Override
+    public boolean accept(File directory, String fileName) {
+        return (fileName.endsWith(this.fileExtension));
+    }
+}
+
