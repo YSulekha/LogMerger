@@ -12,6 +12,7 @@ public class ConfigFileRead {
 	ArrayList<String> LogFileList = new ArrayList<String>();
 	ArrayList<String> TimeFormatList = new ArrayList<String>();
 	ArrayList<String> AliasNameList = new ArrayList<String>();
+	ArrayList<String> dNames = new ArrayList<String>();
 	
 	ConfigFileRead(String File_Path){
 		path = File_Path;
@@ -41,6 +42,23 @@ public class ConfigFileRead {
 			
 		}
 	}
+	public void listFilesAndFilesSubDirectories(String directoryName){
+		
+		File directory = new File(directoryName);
+		//get all the files from a directory
+		File[] fList = directory.listFiles();
+		for (File file : fList){
+		//if (file.isFile()){
+	//	System.out.println(file.getAbsolutePath());
+		if (file.isDirectory()){
+			dNames.add(file.getAbsolutePath());
+		listFilesAndFilesSubDirectories(file.getAbsolutePath());
+		}
+		}
+		for(String name:dNames){
+			System.out.println(name);
+		}
+		}
 	/*Testing Purpose
 	public static void main(String [] args){
 		ConfigFileRead cr = new ConfigFileRead("/Users/aharyadi/Documents/workspace/Filef.txt");
