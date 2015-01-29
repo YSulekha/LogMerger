@@ -37,7 +37,7 @@ public class UserInput {
       //check for arguments -d arguments
       else if (arg.equals("-d")) {
       	dir = args[i++];
-      	if (i < args.length && !dir.startsWith("-")){
+      	if (i < args.length && !dir.startsWith("-")) {
       		ui.parentDirectory = dir;
           dflag = true;
          }
@@ -47,22 +47,22 @@ public class UserInput {
          }
       }
       //Check for time Arguments
-      else if(arg.equals("-t")){
+      else if(arg.equals("-t")) {
       	dir = args[i++];
-      	if (i < args.length && !dir.startsWith("-")){
+      	if (i < args.length && !dir.startsWith("-")) {
       		t1 = true;
       		t2 = true;
           ui.timeDiff = Integer.parseInt(args[i++]);
       	}
-      	else{
+      	else {
       		System.err.println("-t requires a timeDiff");
       		break;
       	}
       }
       
-      else if(arg.equals("-t1")){
+      else if(arg.equals("-t1")) {
       	dir = args[i++];
-      	if (i < args.length && !dir.startsWith("-")){
+      	if (i < args.length && !dir.startsWith("-")) {
       		t1 = true;
           ui.sStartDate = args[i++];
       	}
@@ -72,7 +72,7 @@ public class UserInput {
       	}
       }
       
-      else if(arg.equals("-t2")){
+      else if(arg.equals("-t2")) {
       	dir = args[i++];
       	if (i < args.length && !dir.startsWith("-")){
       		t2 = true;
@@ -88,7 +88,7 @@ public class UserInput {
       }
       System.out.println("End of if else");
 		}
-		if(i < args.length || !t1 || !t2 || !dflag){
+		if(i < args.length || !t1 || !t2 || !dflag) {
 			System.err.println("Invalid input"+t1+t2+dflag);
     	System.err.println("Usage:/n LogMerge -d <PathToDirectory> -t <timeDiff>");
     	System.err.println("LogMerge -d <PathToDirectory> -t1 <StartTime> -t2 <endTime>");
@@ -98,20 +98,20 @@ public class UserInput {
 			ui.date_calculation();
 	//	ui.user_Input();
 	}
-	public void date_calculation(){
+	public void date_calculation() {
 		if(timeDiff != 0){
 			endDate = new Date();
 			long t= endDate.getTime();
 			startDate=new Date(t - (1000 * ONE_MINUTE_IN_MILLIS));
 		}
-		else{
+		else {
 			SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SS");
 			try { 
 				//if not valid, it will throw ParseException
 				startDate = sd.parse(sStartDate);
 				endDate = sd.parse(sEndDate);
 			}
-			catch(ParseException e){
+			catch(ParseException e) {
 				System.out.println("Unable to parse the date");
 				e.printStackTrace();
 			}
