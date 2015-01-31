@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
-import java.io.FilenameFilter;
+//import java.io.FilenameFilter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,18 +21,19 @@ public class ConfigFileRead {
 	ArrayList<String> AliasNameList = new ArrayList<String>();
 	private ArrayList<String> dNames = new ArrayList<String>();
 	UserInput ui = new UserInput();
+	
 	ConfigFileRead(String File_Path) {
 		path = File_Path;
 	}
 	
 	public void file_Open() throws IOException {
-		 FileReader freader = new FileReader(path);
-		 BufferedReader reader = new BufferedReader(freader);
-		 String line = null;
-		 while((line=reader.readLine()) != null){
-			 addList(line);
-		 }
-		 reader.close();
+		FileReader freader = new FileReader(path);
+		BufferedReader reader = new BufferedReader(freader);
+		String line = null;
+		while((line=reader.readLine()) != null){
+			addList(line);
+		}
+		reader.close();
 	}
 	
 	public void addList(String lineToParse) {
@@ -144,7 +145,7 @@ public class ConfigFileRead {
 	}*/
 
 //inner class, generic extension filter
-public class GenericExtFilter implements FilenameFilter {
+/*public class GenericExtFilter implements FilenameFilter {
 
 	private String ext;
 
@@ -156,7 +157,7 @@ public class GenericExtFilter implements FilenameFilter {
 	// Pattern.compile(_pattern).matcher(file.getName()).find();
 		return (name.endsWith(ext));
 	}
-}
+}*/
 public class WildCardFileFilter implements FileFilter{
 	
     private String _pattern;

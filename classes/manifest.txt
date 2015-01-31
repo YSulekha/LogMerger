@@ -1,1 +1,2 @@
-Main-Class: com.LogMerge.LogAnalysis
+Main-Class: com.LogMerge.UserInput
+

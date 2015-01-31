@@ -2,6 +2,7 @@ package com.LogMerge;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 //import java.text.ParseException;
 //import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,6 +17,9 @@ public class UserInput {
 	int timeDiff;
 	String fileString;
 	static final long ONE_MINUTE_IN_MILLIS=60000;
+	ArrayList<String> LogFileList = new ArrayList<String>();
+	ArrayList<String> TimeFormatList = new ArrayList<String>();
+	ArrayList<String> AliasNameList = new ArrayList<String>();
 	
 	public static void main(String args[]){
 		UserInput ui = new UserInput();
@@ -37,7 +41,7 @@ public class UserInput {
       //check for arguments -d arguments
       else if (arg.equals("-d")) {
       	dir = args[i++];
-      	if (i < args.length && !dir.startsWith("-")) {
+      	if (i <= args.length && !dir.startsWith("-")) {
       		ui.parentDirectory = dir;
           dflag = true;
          }
@@ -49,10 +53,10 @@ public class UserInput {
       //Check for time Arguments
       else if(arg.equals("-t")) {
       	dir = args[i++];
-      	if (i < args.length && !dir.startsWith("-")) {
+      	if (i <= args.length && !dir.startsWith("-")) {
       		t1 = true;
       		t2 = true;
-          ui.timeDiff = Integer.parseInt(args[i++]);
+          ui.timeDiff = Integer.parseInt(dir);
       	}
       	else {
       		System.err.println("-t requires a timeDiff");
@@ -62,9 +66,9 @@ public class UserInput {
       
       else if(arg.equals("-t1")) {
       	dir = args[i++];
-      	if (i < args.length && !dir.startsWith("-")) {
+      	if (i <= args.length && !dir.startsWith("-")) {
       		t1 = true;
-          ui.sStartDate = args[i++];
+          ui.sStartDate = dir+" "+args[i++];
       	}
       	else{
       		System.err.println("-t1 requires a date");
@@ -74,9 +78,9 @@ public class UserInput {
       
       else if(arg.equals("-t2")) {
       	dir = args[i++];
-      	if (i < args.length && !dir.startsWith("-")){
+      	if (i <= args.length && !dir.startsWith("-")){
       		t2 = true;
-          ui.sEndDate = args[i++];
+          ui.sEndDate = dir+" "+args[i++];
       	}
       	else{
           System.err.println("-t2 requires a date");
@@ -86,23 +90,28 @@ public class UserInput {
       else{  	
       	break;
       }
-      System.out.println("End of if else");
+     // System.out.println("End of if else");
 		}
 		if(i < args.length || !t1 || !t2 || !dflag) {
 			System.err.println("Invalid input"+t1+t2+dflag);
     	System.err.println("Usage:/n LogMerge -d <PathToDirectory> -t <timeDiff>");
     	System.err.println("LogMerge -d <PathToDirectory> -t1 <StartTime> -t2 <endTime>");
-    	System.out.println("LogMerge -d <PathToDirectory> -t <timeDiff> or -t1 <StartTime> -t2 <endTime> ");
+    	System.out.println("LogMerge -d <PathToDirectory> -f filetoSearch -t <timeDiff> or -t1 <StartTime> -t2 <endTime> ");
 		}
-		else
+		else{
+		//	System.out.println("Dir:"+ui.parentDirectory+"StartDate"+ui.sStartDate+"End Date"+ui.sEndDate);
 			ui.date_calculation();
-	//	ui.user_Input();
+			InputProcessing ipc = new InputProcessing();
+			ipc.fileSearch(ui);
+			LogAnalysis la = new LogAnalysis();
+			la.lAnalysis(ui);
+		}
 	}
 	public void date_calculation() {
 		if(timeDiff != 0){
 			endDate = new Date();
 			long t= endDate.getTime();
-			startDate=new Date(t - (1000 * ONE_MINUTE_IN_MILLIS));
+			startDate=new Date(t - (timeDiff * ONE_MINUTE_IN_MILLIS));
 		}
 		else {
 			SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SS");
@@ -112,10 +121,11 @@ public class UserInput {
 				endDate = sd.parse(sEndDate);
 			}
 			catch(ParseException e) {
-				System.out.println("Unable to parse the date");
+				System.out.println("Unable to parse the date"+sStartDate+sEndDate);
 				e.printStackTrace();
 			}
 		}
+	//	System.out.println("Inside date_Calculation"+"StartDate"+startDate+"End Date"+endDate);
 	}
 /*public void user_Input(){
 		

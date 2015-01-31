@@ -20,7 +20,7 @@ public class LogAnalysis {
 	File logFile;
 	BufferedWriter pw;
 	TreeMap<Date, String> FinalLog = new TreeMap<Date, String>();
-	UserInput ui = new UserInput();
+	UserInput ui; 
 	//To-do
 	public void LogFileOpen() {
 		logFile = new File("LogSum");
@@ -36,7 +36,7 @@ public class LogAnalysis {
 		}
 	}
 	//Opens the config file
-	public void lAnalysis() {
+/*	public void lAnalysis() {
 	//	ui.user_Input();
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter the config file path");
@@ -62,6 +62,33 @@ public class LogAnalysis {
 			}
 			catch(Exception ex) {
 				System.out.println("File not found "+cfr.LogFileList.get(j));
+				ex.printStackTrace();
+				j++;
+			}		
+		}
+		LogFileOpen();
+	}*/
+	public void lAnalysis(UserInput uin) {
+		ui = uin;
+	//	System.out.println("Inside LogAnalysis");
+		InputProcessing iP = new InputProcessing();
+		int i = ui.LogFileList.size();
+	//	System.out.println("Inside LogAnalysis"+i);
+		for(String s:ui.LogFileList){
+	//		System.out.println("Inside LogAnalysis"+s);
+		}
+		int j = 0;
+		FileReader freader; 
+		BufferedReader reader = null;
+		while(j < i) {
+			try {
+				freader = new FileReader(new File(ui.LogFileList.get(j)));
+				reader = new BufferedReader(freader);
+				fileExtract(reader,ui.TimeFormatList.get(j),ui.AliasNameList.get(j));
+				j++;
+			}
+			catch(IOException ex) {
+				System.out.println("File not found "+ui.LogFileList.get(j));
 				ex.printStackTrace();
 				j++;
 			}		
@@ -109,7 +136,7 @@ public class LogAnalysis {
 	
 	public Date timeComparision(String t,String timeFormat) {
 		Date d=null;
-		String unique = "";
+	//	String unique = "";
 		SimpleDateFormat sd = new SimpleDateFormat(timeFormat);
 		try{
 		d = sd.parse(t);
@@ -125,9 +152,9 @@ public class LogAnalysis {
 		}
 		return null;
 	}
-	
-	public static void main(String [] args) {
+	//testing purpose
+	/*public static void main(String [] args) {
 		LogAnalysis la = new LogAnalysis();
 		la.lAnalysis();
-	}
+	}*/
 }
