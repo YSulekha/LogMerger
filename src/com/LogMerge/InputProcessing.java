@@ -52,6 +52,7 @@ public class InputProcessing {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 		dNames.add(directoryName);
 		listFilesAndFilesSubDirectories(directoryName);
+		ui.logger.info("Inside Directory Search");
 		for(String d:dNames){
 			File dir = new File(d);
 			for(String fname:filename) {
@@ -60,7 +61,7 @@ public class InputProcessing {
 				for(File f:files) {
 					try{
 						String sDate = sdf.format(f.lastModified());
-						
+						ui.logger.info("Modified Time of File"+f.getName()+"is"+sDate);
 						if(sdf.parse(sDate).compareTo(ui.startDate)>=0) {
 							FileReader fr = new FileReader(f);
 							BufferedReader bf = new BufferedReader(fr);
@@ -86,7 +87,7 @@ public class InputProcessing {
 								}
 								if(count==5)
 									break;
-							}	
+							}
 							String tfs[] = timeFormat.split(">");
 							int c= 0;
 							String tfFinal = " ";
@@ -120,7 +121,10 @@ public class InputProcessing {
 				}
 			}
 		}
-		
+		ui.logger.info("Final list of logs");
+		for(int i = 0;i < ui.LogFileList.size();i++){
+			ui.logger.info("FileName"+ui.LogFileList.get(i)+ui.TimeFormatList.get(i));
+		}
 	}
 	
 	public void listFilesAndFilesSubDirectories(String directoryName) {

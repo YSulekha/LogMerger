@@ -1,5 +1,6 @@
 package com.LogMerge;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,6 +8,9 @@ import java.util.ArrayList;
 //import java.text.SimpleDateFormat;
 import java.util.Date;
 //import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class UserInput {
 	Date startDate;
@@ -20,7 +24,9 @@ public class UserInput {
 	ArrayList<String> LogFileList = new ArrayList<String>();
 	ArrayList<String> TimeFormatList = new ArrayList<String>();
 	ArrayList<String> AliasNameList = new ArrayList<String>();
-	
+	Logger logger = Logger.getLogger("MyLog");  
+  FileHandler fh;
+  
 	public static void main(String args[]){
 		UserInput ui = new UserInput();
 		int i = 0;
@@ -29,6 +35,17 @@ public class UserInput {
 		boolean t2 = false;
 		boolean dflag = false;
 		String dir = "";
+		try{
+		ui.fh = new FileHandler("MyLogFile.log");  
+    ui.logger.addHandler(ui.fh);
+		}
+		catch(IOException ex){
+			System.out.println("Error in creating log file");
+		}
+    SimpleFormatter formatter = new SimpleFormatter();  
+    ui.fh.setFormatter(formatter);  
+    ui.logger.setUseParentHandlers(false);
+    ui.logger.info("Processing User Input");
 		while (i < args.length && args[i].startsWith("-")) {
 			arg = args[i++];
 
@@ -100,6 +117,7 @@ public class UserInput {
 		}
 		else{
 		//	System.out.println("Dir:"+ui.parentDirectory+"StartDate"+ui.sStartDate+"End Date"+ui.sEndDate);
+			ui.logger.info("User Input is correct");
 			ui.date_calculation();
 			InputProcessing ipc = new InputProcessing();
 			ipc.fileSearch(ui);
@@ -125,6 +143,7 @@ public class UserInput {
 				e.printStackTrace();
 			}
 		}
+		logger.info("StartDate"+startDate+"EndDate"+endDate);
 	//	System.out.println("Inside date_Calculation"+"StartDate"+startDate+"End Date"+endDate);
 	}
 /*public void user_Input(){
