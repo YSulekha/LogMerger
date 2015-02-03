@@ -23,7 +23,7 @@ public class LogAnalysis {
 	UserInput ui; 
 	//To-do
 	public void LogFileOpen() {
-		logFile = new File("LogSum");
+		logFile = new File("MergeLog");
 		try{
 		pw = new BufferedWriter(new FileWriter(logFile));
 		for(Date key: FinalLog.keySet()){
