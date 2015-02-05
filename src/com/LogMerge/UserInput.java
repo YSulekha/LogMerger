@@ -20,6 +20,8 @@ public class UserInput {
 	String parentDirectory;
 	int timeDiff;
 	String fileString;
+	String ignoreFile;
+	boolean recent = false;
 	static final long ONE_MINUTE_IN_MILLIS=60000;
 	ArrayList<String> LogFileList = new ArrayList<String>();
 	ArrayList<String> TimeFormatList = new ArrayList<String>();
@@ -34,6 +36,7 @@ public class UserInput {
 		boolean t1 = false;
 		boolean t2 = false;
 		boolean dflag = false;
+		
 		String dir = "";
 		try{
 		ui.fh = new FileHandler("MyLogFile.log");  
@@ -104,6 +107,13 @@ public class UserInput {
           break;
       	}
       }
+      
+      else if(arg.equals("-i")){
+      	ui.ignoreFile = args[i++];
+      }
+      else if(arg.equals("-recent")){
+      	ui.recent = true;
+      }
       else{  	
       	break;
       }
@@ -113,6 +123,8 @@ public class UserInput {
 			System.err.println("Invalid input"+t1+t2+dflag);
     	System.err.println("Usage:/n LogMerge -d <PathToDirectory> -t <timeDiff>");
     	System.err.println("LogMerge -d <PathToDirectory> -t1 <StartTime> -t2 <endTime>");
+    	System.err.println("LogMerge -d <PathToDirectory> -t1 <StartTime> -t2 <endTime> -recent");
+    	System.err.println("LogMerge -d <PathToDirectory> -i <(optionalinput)filetoignore> -t1 <StartTime> -t2 <endTime>");
     	System.out.println("LogMerge -d <PathToDirectory> -f filetoSearch -t <timeDiff> or -t1 <StartTime> -t2 <endTime> ");
 		}
 		else{
