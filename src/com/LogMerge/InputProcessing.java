@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,6 +27,7 @@ public class InputProcessing {
     "MM/dd/yyyy'T'HH:mm:ssZ",     "MM/dd/yyyy'T'HH:mm:ss", 
     "yyyy:MM:dd HH:mm:ss,SS","yyyy-MM-dd HH:mm:ss" };
 	private ArrayList<String> dNames = new ArrayList<String>();
+	
 	UserInput ui;
 	
 	public void fileSearch(UserInput uin) {
@@ -49,6 +52,10 @@ public class InputProcessing {
 		String timeFormat;
 		String format;
 		String filename[] = fileNameString.split(",");
+		List<String> items = null;
+		if(ui.ignoreFile != null){
+			items = Arrays.asList(ui.ignoreFile.split(","));
+		}
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 		dNames.add(directoryName);
 		listFilesAndFilesSubDirectories(directoryName);
@@ -60,9 +67,16 @@ public class InputProcessing {
 				File[] files = dir.listFiles(filter);
 				for(File f:files) {
 					try{
+						if(items.contains(f.getName()))
+							break;
 						String sDate = sdf.format(f.lastModified());
 						ui.logger.info("Modified Time of File"+f.getName()+"is"+sDate);
 						if(sdf.parse(sDate).compareTo(ui.startDate)>=0) {
+							if(ui.recent == true){
+								ui.LogFileList.add(f.getAbsolutePath());
+								ui.TimeFormatList.add(sDate);
+								break;
+							}
 							FileReader fr = new FileReader(f);
 							BufferedReader bf = new BufferedReader(fr);
 							line = "";
@@ -121,9 +135,16 @@ public class InputProcessing {
 				}
 			}
 		}
+		if(ui.recent == true){
+			for(int i = 0;i < ui.LogFileList.size();i++){
+				System.out.println(ui.LogFileList.get(i)+"/t"+ui.TimeFormatList.get(i));
+			}
+		}
+		else{
 		ui.logger.info("Final list of logs");
 		for(int i = 0;i < ui.LogFileList.size();i++){
 			ui.logger.info("FileName"+ui.LogFileList.get(i)+ui.TimeFormatList.get(i));
+		}
 		}
 	}
 	
