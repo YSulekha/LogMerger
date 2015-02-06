@@ -26,6 +26,7 @@ public class UserInput {
 	ArrayList<String> LogFileList = new ArrayList<String>();
 	ArrayList<String> TimeFormatList = new ArrayList<String>();
 	ArrayList<String> AliasNameList = new ArrayList<String>();
+	ArrayList<LogFile> LogFile = new ArrayList<LogFile>();
 	Logger logger = Logger.getLogger("MyLog");  
   FileHandler fh;
   
