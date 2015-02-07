@@ -1,42 +1,42 @@
-Feb 01, 2015 12:35:52 AM com.LogMerge.UserInput main
+Feb 06, 2015 3:21:02 PM com.LogMerge.UserInput main
 INFO: Processing User Input
-Feb 01, 2015 12:35:52 AM com.LogMerge.UserInput main
+Feb 06, 2015 3:21:02 PM com.LogMerge.UserInput main
 INFO: User Input is correct
-Feb 01, 2015 12:35:52 AM com.LogMerge.UserInput date_calculation
-INFO: StartDateSun Dec 14 09:55:52 PST 2014EndDateSun Feb 01 00:35:52 PST 2015
-Feb 01, 2015 12:35:52 AM com.LogMerge.InputProcessing fileLocation
+Feb 06, 2015 3:21:02 PM com.LogMerge.UserInput date_calculation
+INFO: StartDateFri Dec 12 12:12:12 PST 2014EndDateTue Dec 23 12:12:12 PST 2014
+Feb 06, 2015 3:21:02 PM com.LogMerge.InputProcessing fileLocation
 INFO: Inside Directory Search
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
-INFO: Modified Time of FileMyLogFile.logis02/01/2015 00:14:04
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
+Feb 06, 2015 3:21:02 PM com.LogMerge.InputProcessing fileLocation
+INFO: Modified Time of FileMyLogFile.logis02/06/2015 11:36:27
+Feb 06, 2015 3:21:02 PM com.LogMerge.InputProcessing fileLocation
 INFO: Modified Time of FilessoAdminServer (1).logis01/13/2015 01:13:32
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
+Feb 06, 2015 3:21:02 PM com.LogMerge.InputProcessing fileLocation
 INFO: Modified Time of FilessoAdminServer (2).logis01/23/2015 17:55:26
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
+Feb 06, 2015 3:21:02 PM com.LogMerge.InputProcessing fileLocation
 INFO: Modified Time of FilessoAdminServer.logis01/13/2015 01:13:25
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
+Feb 06, 2015 3:21:02 PM com.LogMerge.InputProcessing fileLocation
 INFO: Modified Time of Fileu_ex141010 (1).logis12/07/2014 00:27:26
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
+Feb 06, 2015 3:21:02 PM com.LogMerge.InputProcessing fileLocation
 INFO: Modified Time of Fileu_ex141010.logis12/06/2014 01:39:33
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
+Feb 06, 2015 3:21:02 PM com.LogMerge.InputProcessing fileLocation
 INFO: Modified Time of Filevmware-identity-sts.logis01/13/2015 01:13:33
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
+Feb 06, 2015 3:21:02 PM com.LogMerge.InputProcessing fileLocation
 INFO: Modified Time of Filevmware-sts-idmd.logis01/13/2015 01:13:34
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
+Feb 06, 2015 3:21:02 PM com.LogMerge.InputProcessing fileLocation
 INFO: Modified Time of FilessoAdminServer (1).logis01/13/2015 01:13:32
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
+Feb 06, 2015 3:21:03 PM com.LogMerge.InputProcessing fileLocation
 INFO: Modified Time of Fileu_ex141010.logis12/06/2014 01:39:33
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
+Feb 06, 2015 3:21:03 PM com.LogMerge.InputProcessing fileLocation
 INFO: Final list of logs
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
-INFO: FileName/Users/aharyadi/Downloads/ssoAdminServer (1).logyyyy-MM-dd HH:mm:ss,SS
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
-INFO: FileName/Users/aharyadi/Downloads/ssoAdminServer (2).logyyyy-MM-dd HH:mm:ss,SS
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
-INFO: FileName/Users/aharyadi/Downloads/ssoAdminServer.logyyyy-MM-dd HH:mm:ss,SS
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
-INFO: FileName/Users/aharyadi/Downloads/vmware-identity-sts.logyyyy-MM-dd HH:mm:ss,SS
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
-INFO: FileName/Users/aharyadi/Downloads/vmware-sts-idmd.logyyyy-MM-dd HH:mm:ss,SS
-Feb 01, 2015 12:35:53 AM com.LogMerge.InputProcessing fileLocation
-INFO: FileName/Users/aharyadi/Downloads/exercises/ssoAdminServer (1).logyyyy-MM-dd HH:mm:ss,SS
+Feb 06, 2015 3:21:03 PM com.LogMerge.InputProcessing fileLocation
+INFO: FileNamessoAdminServer (1).logyyyy-MM-dd HH:mm:ss,SS
+Feb 06, 2015 3:21:03 PM com.LogMerge.InputProcessing fileLocation
+INFO: FileNamessoAdminServer (2).logyyyy-MM-dd HH:mm:ss,SS
+Feb 06, 2015 3:21:03 PM com.LogMerge.InputProcessing fileLocation
+INFO: FileNamessoAdminServer.logyyyy-MM-dd HH:mm:ss,SS
+Feb 06, 2015 3:21:03 PM com.LogMerge.InputProcessing fileLocation
+INFO: FileNamevmware-identity-sts.logyyyy-MM-dd HH:mm:ss,SS
+Feb 06, 2015 3:21:03 PM com.LogMerge.InputProcessing fileLocation
+INFO: FileNamevmware-sts-idmd.logyyyy-MM-dd HH:mm:ss,SS
+Feb 06, 2015 3:21:03 PM com.LogMerge.InputProcessing fileLocation
+INFO: FileNamessoAdminServer (1).logyyyy-MM-dd HH:mm:ss,SS

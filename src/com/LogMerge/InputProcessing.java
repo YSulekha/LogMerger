@@ -52,9 +52,11 @@ public class InputProcessing {
 		String timeFormat;
 		String format;
 		String filename[] = fileNameString.split(",");
+		boolean iFile = false;
 		List<String> items = null;
 		if(ui.ignoreFile != null){
 			items = Arrays.asList(ui.ignoreFile.split(","));
+			iFile = true;
 		}
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 		dNames.add(directoryName);
@@ -67,15 +69,17 @@ public class InputProcessing {
 				File[] files = dir.listFiles(filter);
 				for(File f:files) {
 					try{
-						if(items.contains(f.getName()))
-							break;
+						if(iFile == true && items.contains(f.getName()))
+							continue;
 						String sDate = sdf.format(f.lastModified());
 						ui.logger.info("Modified Time of File"+f.getName()+"is"+sDate);
 						if(sdf.parse(sDate).compareTo(ui.startDate)>=0) {
 							if(ui.recent == true){
-								ui.LogFileList.add(f.getAbsolutePath());
+								//System.out.println("Inside Recent");
+								ui.FileList.add(f.getAbsolutePath());
 								ui.TimeFormatList.add(sDate);
-								break;
+					//			system.out.println()
+								continue;
 							}
 							FileReader fr = new FileReader(f);
 							BufferedReader bf = new BufferedReader(fr);
@@ -113,9 +117,15 @@ public class InputProcessing {
 							}
 							if(c > 1 && tfFinal != null){
 							//	System.out.println("Inside first for"+f.getName());
-								ui.LogFileList.add(f.getAbsolutePath());
-								ui.AliasNameList.add(f.getName());
-								ui.TimeFormatList.add(tfFinal);
+								LogFile l = new LogFile(f.getName());
+								l.aliasName = f.getName();
+								l.logLocation = f.getAbsolutePath();
+								l.timeFormat = tfFinal;
+								l.modificationTime = sDate;
+								ui.LogFileList.add(l);
+							//	ui.LogFileList.add(f.getAbsolutePath());
+								//ui.AliasNameList.add(f.getName());
+								//ui.TimeFormatList.add(tfFinal);
 							}
 							bf.close();
 						}
@@ -136,14 +146,16 @@ public class InputProcessing {
 			}
 		}
 		if(ui.recent == true){
-			for(int i = 0;i < ui.LogFileList.size();i++){
-				System.out.println(ui.LogFileList.get(i)+"/t"+ui.TimeFormatList.get(i));
+			//System.out.println("Inside Recent forrr"+ui.FileList.size());
+			for(int i = 0;i < ui.FileList.size();i++){
+			//	System.out.println("Inside Recent forrr");
+				System.out.println(ui.FileList.get(i)+"\t"+ui.TimeFormatList.get(i));
 			}
 		}
 		else{
 		ui.logger.info("Final list of logs");
 		for(int i = 0;i < ui.LogFileList.size();i++){
-			ui.logger.info("FileName"+ui.LogFileList.get(i)+ui.TimeFormatList.get(i));
+			ui.logger.info("FileName"+ui.LogFileList.get(i).fileName+ui.LogFileList.get(i).timeFormat);
 		}
 		}
 	}

@@ -23,10 +23,10 @@ public class UserInput {
 	String ignoreFile;
 	boolean recent = false;
 	static final long ONE_MINUTE_IN_MILLIS=60000;
-	ArrayList<String> LogFileList = new ArrayList<String>();
+	ArrayList<String> FileList = new ArrayList<String>();
 	ArrayList<String> TimeFormatList = new ArrayList<String>();
-	ArrayList<String> AliasNameList = new ArrayList<String>();
-	ArrayList<LogFile> LogFile = new ArrayList<LogFile>();
+	//ArrayList<String> AliasNameList = new ArrayList<String>();
+	ArrayList<LogFile> LogFileList = new ArrayList<LogFile>();
 	Logger logger = Logger.getLogger("MyLog");  
   FileHandler fh;
   
@@ -50,6 +50,7 @@ public class UserInput {
     ui.fh.setFormatter(formatter);  
     ui.logger.setUseParentHandlers(false);
     ui.logger.info("Processing User Input");
+    try{
 		while (i < args.length && args[i].startsWith("-")) {
 			arg = args[i++];
 
@@ -120,6 +121,10 @@ public class UserInput {
       }
      // System.out.println("End of if else");
 		}
+    }
+    catch(Exception e){
+    	dflag = false;
+    }
 		if(i < args.length || !t1 || !t2 || !dflag) {
 			System.err.println("Invalid input"+t1+t2+dflag);
     	System.err.println("Usage:/n LogMerge -d <PathToDirectory> -t <timeDiff>");

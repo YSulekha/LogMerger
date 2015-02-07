@@ -7,4 +7,7 @@ public class LogFile {
 	String timeFormat;
 	String modificationTime;
 	
+	LogFile(String fname){
+		fileName = fname;
+	}
 }

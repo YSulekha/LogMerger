@@ -6,9 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -70,25 +68,25 @@ public class LogAnalysis {
 	}*/
 	public void lAnalysis(UserInput uin) {
 		ui = uin;
+		LogFile l = null;
 	//	System.out.println("Inside LogAnalysis");
-		InputProcessing iP = new InputProcessing();
+//		InputProcessing iP = new InputProcessing();
 		int i = ui.LogFileList.size();
 	//	System.out.println("Inside LogAnalysis"+i);
-		for(String s:ui.LogFileList){
-	//		System.out.println("Inside LogAnalysis"+s);
-		}
+	
 		int j = 0;
 		FileReader freader; 
 		BufferedReader reader = null;
 		while(j < i) {
 			try {
-				freader = new FileReader(new File(ui.LogFileList.get(j)));
+				l = ui.LogFileList.get(j);
+				freader = new FileReader(new File(l.logLocation));
 				reader = new BufferedReader(freader);
-				fileExtract(reader,ui.TimeFormatList.get(j),ui.AliasNameList.get(j));
+				fileExtract(reader,l.timeFormat,l.aliasName);
 				j++;
 			}
 			catch(IOException ex) {
-				System.out.println("File not found "+ui.LogFileList.get(j));
+				System.out.println("File not found "+l.fileName);
 				ex.printStackTrace();
 				j++;
 			}		
