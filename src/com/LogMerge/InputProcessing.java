@@ -75,10 +75,8 @@ public class InputProcessing {
 						ui.logger.info("Modified Time of File"+f.getName()+"is"+sDate);
 						if(sdf.parse(sDate).compareTo(ui.startDate)>=0) {
 							if(ui.recent == true){
-								//System.out.println("Inside Recent");
 								ui.FileList.add(f.getAbsolutePath());
 								ui.TimeFormatList.add(sDate);
-					//			system.out.println()
 								continue;
 							}
 							FileReader fr = new FileReader(f);
@@ -116,7 +114,6 @@ public class InputProcessing {
 								}
 							}
 							if(c > 1 && tfFinal != null){
-							//	System.out.println("Inside first for"+f.getName());
 								LogFile l = new LogFile(f.getName());
 								l.aliasName = f.getName();
 								l.logLocation = f.getAbsolutePath();
@@ -146,7 +143,7 @@ public class InputProcessing {
 			}
 		}
 		if(ui.recent == true){
-			//System.out.println("Inside Recent forrr"+ui.FileList.size());
+			
 			for(int i = 0;i < ui.FileList.size();i++){
 			//	System.out.println("Inside Recent forrr");
 				System.out.println(ui.FileList.get(i)+"\t"+ui.TimeFormatList.get(i));
