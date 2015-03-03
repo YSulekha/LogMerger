@@ -28,7 +28,7 @@ public class UserInput {
 	//ArrayList<String> AliasNameList = new ArrayList<String>();
 	ArrayList<LogFile> LogFileList = new ArrayList<LogFile>();
 	Logger logger = Logger.getLogger("MyLog");  
-  FileHandler fh;
+	FileHandler fh;
   
 	public static void main(String args[]){
 		UserInput ui = new UserInput();
