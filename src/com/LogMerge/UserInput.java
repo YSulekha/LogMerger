@@ -113,7 +113,8 @@ public class UserInput {
       else if(arg.equals("-i")){
       	ui.ignoreFile = args[i++];
       }
-      else if(arg.equals("-recent")){
+      
+      else if(arg.equals("-l")){
       	ui.recent = true;
       }
       else{  	
