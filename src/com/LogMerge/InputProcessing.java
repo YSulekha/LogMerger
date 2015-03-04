@@ -35,7 +35,6 @@ public class InputProcessing {
 		ui = uin;
 		if(ui.fileString == null) {
 			fileLocation(ui.parentDirectory,FILE_TEXT_EXT);
-			
 		}
 		if(ui.fileString != null) {
 			fileLocation(ui.parentDirectory,ui.fileString);
@@ -120,9 +119,6 @@ public class InputProcessing {
 								l.timeFormat = tfFinal;
 								l.modificationTime = sDate;
 								ui.LogFileList.add(l);
-							//	ui.LogFileList.add(f.getAbsolutePath());
-								//ui.AliasNameList.add(f.getName());
-								//ui.TimeFormatList.add(tfFinal);
 							}
 							bf.close();
 						}
