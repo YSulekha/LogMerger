@@ -166,20 +166,20 @@ public class InputProcessing {
 	
 	public static String parse(String date) {
 		Date da;
-    if (date != null) {
-    	for (String parse : formats) {
-    		SimpleDateFormat sdf = new SimpleDateFormat(parse);
-        try {
-        	da = sdf.parse(date);
-          if(sdf.format(da).equals(date))
-          	return parse;
+		if (date != null) {
+			for (String parse : formats) {
+				SimpleDateFormat sdf = new SimpleDateFormat(parse);
+				try {
+					da = sdf.parse(date);
+					if(sdf.format(da).equals(date))
+						return parse;
         } 
         catch (ParseException e) {
-        
+ 
         }
       }
     }
-    return null;
+		return null;
 	}
 	
 	public class WildCardFileFilter implements FileFilter {
