@@ -15,6 +15,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The InputProcessing class process the user input to get the list
+ * of Log filenames which needs to be considered for merging
+ */
 public class InputProcessing {
 	private static final String FILE_TEXT_EXT = "*.log";
 	private static final String[] formats = { 
@@ -86,10 +90,10 @@ public class InputProcessing {
 								matcher = pattern.matcher(line);
 								if(matcher.find()) {
 									date = matcher.group(1);
-					        if(date.charAt(0) == '[') {
-					        	date = date.substring(1);
+									if(date.charAt(0) == '[') {
+										date = date.substring(1);
 					        }
-					        count++;
+									count++;
 					      }
 								if(date != null) {
 									format = parse(date);
