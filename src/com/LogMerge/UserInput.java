@@ -11,7 +11,10 @@ import java.util.Date;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-
+/**
+ * The UserInput class collects the user input and stores it in 
+ * the instance variables
+ */
 public class UserInput {
 	Date startDate;
 	Date endDate;
