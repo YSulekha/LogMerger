@@ -12,7 +12,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+/**
+ * The LogAnalysis class analysis all the log files
+ *  and merges into one file
+ */
 public class LogAnalysis {
 	
 	File logFile;
