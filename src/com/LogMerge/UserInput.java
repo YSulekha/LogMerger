@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-//import java.text.ParseException;
-//import java.text.SimpleDateFormat;
 import java.util.Date;
-//import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -25,7 +22,7 @@ public class UserInput {
 	String fileString;
 	String ignoreFile;
 	boolean recent = false;
-	static final long ONE_MINUTE_IN_MILLIS=60000;
+	static final long              ONE_MINUTE_IN_MILLIS=60000;
 	ArrayList<String> FileList = new ArrayList<String>();
 	ArrayList<String> TimeFormatList = new ArrayList<String>();
 	//ArrayList<String> AliasNameList = new ArrayList<String>();
@@ -33,7 +30,7 @@ public class UserInput {
 	Logger logger = Logger.getLogger("MyLog");  
 	FileHandler fh;
   
-	public static void main(String args[]){
+	public static void main(String args[]) {
 		UserInput ui = new UserInput();
 		int i = 0;
 		String arg = "";
