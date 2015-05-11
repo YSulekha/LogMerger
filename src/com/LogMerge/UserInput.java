@@ -71,7 +71,7 @@ public class UserInput {
           dflag = true;
          }
          else{
-        	 System.err.println("-d requires a directory");
+        	 System.err.println(" -d requires a directory");
         	 break;
          }
       }
@@ -84,7 +84,7 @@ public class UserInput {
           ui.timeDiff = Integer.parseInt(dir);
       	}
       	else {
-      		System.err.println("-t requires a timeDiff");
+      		System.err.println(" -t requires a timeDiff");
       		break;
       	}
       }
@@ -96,7 +96,7 @@ public class UserInput {
           ui.sStartDate = dir+" "+args[i++];
       	}
       	else{
-      		System.err.println("-t1 requires a date");
+      		System.err.println(" -t1 requires a date");
       		break;
       	}
       }
@@ -108,7 +108,7 @@ public class UserInput {
           ui.sEndDate = dir+" "+args[i++];
       	}
       	else{
-          System.err.println("-t2 requires a date");
+          System.err.println(" -t2 requires a date");
           break;
       	}
       }
@@ -212,6 +212,7 @@ public class UserInput {
 		/*	System.out.println(date);
 			if(!sd.format(d).equals(date)){
 				System.out.println("Invalid date");
+				System.out.println("XXX Debug this");
 				validDate = 1;
 			}*/
  /*
