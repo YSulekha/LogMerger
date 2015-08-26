@@ -72,11 +72,7 @@ public class LogAnalysis {
 	public void lAnalysis(UserInput uin) {
 		ui = uin;
 		LogFile l = null;
-	
-//		InputProcessing iP = new InputProcessing();
 		int i = ui.LogFileList.size();
-	//	System.out.println("Inside LogAnalysis"+i);
-	
 		int j = 0;
 		FileReader freader; 
 		BufferedReader reader = null;
