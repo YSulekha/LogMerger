@@ -22,7 +22,7 @@ public class LogAnalysis {
 	BufferedWriter pw;
 	TreeMap<Date, String> FinalLog = new TreeMap<Date, String>();
 	UserInput ui; 
-	//To-do
+	
 	public void LogFileOpen() {
 		logFile = new File("MergeLog");
 		try{
@@ -149,9 +149,5 @@ public class LogAnalysis {
 		}
 		return null;
 	}
-	//testing purpose
-	/*public static void main(String [] args) {
-		LogAnalysis la = new LogAnalysis();
-		la.lAnalysis();
-	}*/
+
 }
