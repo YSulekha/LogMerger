@@ -133,7 +133,6 @@ public class LogAnalysis {
 	
 	public Date timeComparision(String t,String timeFormat) {
 		Date d=null;
-	//	String unique = "";
 		SimpleDateFormat sd = new SimpleDateFormat(timeFormat);
 		try{
 		d = sd.parse(t);
