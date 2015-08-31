@@ -136,7 +136,7 @@ public class UserInput {
     	System.out.println("LogMerge -d <PathToDirectory> -f filetoSearch -t <timeDiff> or -t1 <StartTime> -t2 <endTime> ");
 		}
 		else{
-		//	System.out.println("Dir:"+ui.parentDirectory+"StartDate"+ui.sStartDate+"End Date"+ui.sEndDate);
+		
 			ui.logger.info("User Input is correct");
 			ui.date_calculation();
 			InputProcessing ipc = new InputProcessing();
@@ -164,7 +164,7 @@ public class UserInput {
 			}
 		}
 		logger.info("StartDate"+startDate+"EndDate"+endDate);
-	//	System.out.println("Inside date_Calculation"+"StartDate"+startDate+"End Date"+endDate);
+	
 	}
 /*public void user_Input(){
 		
