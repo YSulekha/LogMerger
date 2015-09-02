@@ -4,14 +4,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
-//import java.io.FilenameFilter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
-
-
 
 public class ConfigFileRead {
 	private String path;
@@ -38,15 +35,12 @@ public class ConfigFileRead {
 	
 	public void addList(String lineToParse) {
 		String [] Tokens = lineToParse.split("\\$");
-	//	System.out.println(Tokens[0]);
 		LogFileList.add(Tokens[0]);
 		TimeFormatList.add(Tokens[1]);
 		AliasNameList.add(Tokens[2]);
 	}
 	
 	public void fileSearch() {
-		
-		
 		if(ui.parentDirectory != null) {
 			fileLocation(ui.parentDirectory,FILE_TEXT_EXT);
 		}
@@ -85,36 +79,32 @@ public class ConfigFileRead {
 		}
 	}*/
 	public void fileLocation(String directoryName,String pattern) {
-		
 		String filename[] = pattern.split(",");
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-	//	WildCardFileFilter filter = new WildCardFileFilter(".*Server.log");
-	//	File[] files = dir.listFiles(filter);
 		dNames.add(directoryName);
 		listFilesAndFilesSubDirectories(directoryName);
 		for(String d:dNames){
 			File dir = new File(d);
 			for(String fname:filename){
 		
-					WildCardFileFilter filter = new WildCardFileFilter(fname);
-					File[] files = dir.listFiles(filter);
-					for(File f:files){
-						try{
+				WildCardFileFilter filter = new WildCardFileFilter(fname);
+				File[] files = dir.listFiles(filter);
+				for(File f:files){
+					try{
 						String sDate = sdf.format(f.lastModified());
-						//	System.out.println(sdf.format(fff.lastModified()));
-							if(sdf.parse(sDate).compareTo(ui.startDate)>=0) {
-								LogFileList.add(f.getAbsolutePath());
-								AliasNameList.add(f.getName());
+						if(sdf.parse(sDate).compareTo(ui.startDate)>=0) {
+							LogFileList.add(f.getAbsolutePath());
+							AliasNameList.add(f.getName());
+						}
 					}
-						}
-						catch(ParseException ex) {
-							System.out.println("Unable to parse the date");
-							ex.printStackTrace();
-						}
+					catch(ParseException ex) {
+						System.out.println("Unable to parse the date");
+						ex.printStackTrace();
+					}
 					
+				}
 			}
 		}
-}
 	}
 	public void listFilesAndFilesSubDirectories(String directoryName) {
 		
@@ -158,18 +148,17 @@ public class ConfigFileRead {
 		return (name.endsWith(ext));
 	}
 }*/
-public class WildCardFileFilter implements FileFilter{
-	
-    private String _pattern;
-    private String p;
+	public class WildCardFileFilter implements FileFilter{
+		private String _pattern;
+    		private String p;
  
-    public WildCardFileFilter(String pattern) {
-    	_pattern = pattern.replace("*", ".*").replace("?", ".");
-    }
+    		public WildCardFileFilter(String pattern) {
+    			_pattern = pattern.replace("*", ".*").replace("?", ".");
+    		}
  
-    public boolean accept(File file) {
-    		return(Pattern.compile(_pattern).matcher(file.getName()).find());
-    }
-}
+    		public boolean accept(File file) {
+    			return(Pattern.compile(_pattern).matcher(file.getName()).find());
+    		}
+	}
 }
 
